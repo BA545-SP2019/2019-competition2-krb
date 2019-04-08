@@ -45,3 +45,47 @@
 ## PipeLine For Our EDA
 
 Our Pipline for the Project is as follows:
+
+1. Import Our Data
+    - read in our data from the given excel file. 
+    - split our data into a feature dataframe and a target dataframe
+2. Clean And Impute Missing Data
+    - we changed our data types of our variables so they were float
+    - we found that none of our data was missing, so we did not need to impute anyhting in this step
+3. Normalize and Standardize Our Data
+    - Used the Std Dev to handle outliers on our continous fields
+    - Used SciKitLearns normalize function to normalize our data
+    - Used MinMax Scaler to then get all of our data between 0 and 1
+    - We also had to do more normalizing so we used log() to handle those columns that we still skewed
+    - we then added our continous columns back into our initial df
+4. Feature Reduction
+    - Use RFE Model to select 8 variables
+    - Use Correlation to select the top 8 variables
+    - Used PCA on our top 8 correlation columns in order to reduce our features further
+5. Testing Our Models
+    - we tested our various models using logistic regression and the results are listed below
+
+|     Model    | Auccuracy 
+| ------------- |:-------------:|
+|  All Features   | .8144 |
+| RFE   | . 8159    |
+| Correlation   | .8188    |
+| PCA | .8185  |
+
+6. Next Steps
+    - we want to try and handle the fact that our target variable, Default, is out of balance.
+    - We also created several new variables and binned others, but our models did not improve so we may revisit this and see if there was something we overlooked
+    - also want to try more advanced modeling techniques to predict whether someone Defaults
+    - we also plan on creating a script to iteratively run through various number of features selected (RFE AND PCA) to evaluae the impact they have on the model. This will save us time from having to try and do each one out manually and will give us a very through view on which model(s) perform the best
+
+
+7. Contributions
+
+So far we have worked pretty evenly and everyone has been contrbituing to the project. The group leader compiled the code from the other group members into one notebook for submission. We have met several times to work on the project and will continue to do so moving forward as we tweak our models for a better accuracy. 
+
+|     Person    |    Contribution  |
+| ------------- |:-------------:|
+| Brian            | 40% |
+| Kevin          | 30% |
+| Ryan          | 30% |
+
