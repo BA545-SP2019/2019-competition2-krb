@@ -1,6 +1,3 @@
-# competition2-krb
-KRB's repository for Competition 2
-
 
 ## Data Dictionary
 
@@ -45,4 +42,6 @@ KRB's repository for Competition 2
     
 
 
-## EDA
+## PipeLine For Our EDA
+
+Our Pipline for the Project is as follows:

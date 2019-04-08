@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
-from sklearn.feature_selection import RFE
 plt.style.use('ggplot')
 pd.options.display.max_columns = None
     
@@ -39,34 +38,4 @@ def make_model(df, df_target):
     
     
     
-def rfe_select(df, df_target, num_features):
-    dataset = df.values
-    target = df_target.values.ravel()
-    
-    model = LogisticRegression()
-    rfe = RFE(model, num_features)
-    rfe = rfe.fit(dataset, target)
-    print(rfe.ranking_)
-    
-    selected_cols = []
-    cols_all = df.columns.tolist()
-    for x in range(0,len(cols_all)):
-        if(rfe.ranking_[x]==1):
-            print(cols_all[x])
-            selected_cols.append(cols_all[x])
-    return(selected_cols)
-
-def correlate(df,df_target,num_features, ignore_sign):
-    df['Default'] = df_target
-    non_ab = df[df.columns[:]].corr()['Default'][:-1]
-    ab = df[df.columns[:]].corr()['Default'][:-1].abs()
-    so = ab.sort_values(ascending=False)
-    end_num = num_features - 1
-    sort_list = so[0:end_num]
-
-    if(ignore_sign == "True"):
-        print (sort_list)
-    else:
-        print(non_ab)
-
     
