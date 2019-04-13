@@ -1,0 +1,65 @@
+For feature selection (suggest a tree based (RF or Extreme Tree))
+    -correlation is too weak
+    - rfe isn't good enough, have to try the others
+
+
+Grid Search CV --> specify a list of values for the hyperparameters and ti runs through them
+    --good starting point --> build one for Random Forrest, Build One for XGboost
+    
+    
+-data robber --> will find the best model for me
+
+Spend some time on running the models and seeing if they are doing well. 
+
+
+
+
+At the end of the day, one person should continue to do EDA
+one person 
+
+
+
+
+look at single males, single females, married males, married females
+
+
+For the final presentation, Tao will be the client (bank) and what will our scenario be? Are we consultants? etc...
+        we need about a week for this 
+        
+Model/Tweaking/EDA needs to be done at this point 
+
+
+I will do the models
+
+
+The most important things is if we can tell a good story, this is like a minincapstone project. 
+
+The objective of the project is to tell a story--can use tableua or whatevr we want
+
+
+Maybe some additional EDA--maybe do some clustering
+
+!/3rd of presentation will be background, 1/3 on EDA, 1/3 on models
+
+Consulting suggestions maybe? 
+
+
+**** Come up with a gameplan **** 
+
+
+Clustering Model for single males between 20-30
+
+If the outstanding debt is going up every month, down every month, or stay the same. Use clustering on this and see what would lead to a default pattern
+
+
+
+cluster age, sex, marriage, etc... 
+
+
+the auto encoder part will be for the credit usage per month (bill amt - pay amt)/bill amt) --> the differnece is if this goes up/down/stays the same
+maybe check debt --> this would be a seperate auto encoder
+
+our AC vectors would be 6 variables long [ 1 for eahc month and defualt for the next month ]
+
+maybe try a convuluted auto encoder (will help woth denoising) 
+

@@ -9,7 +9,8 @@ from sklearn.feature_selection import RFE
 plt.style.use('ggplot')
 pd.options.display.max_columns = None
     
-    
+
+
 def assign_age(Age):
     if Age >= 21 and Age <= 40:
         return "21-40"
@@ -21,10 +22,23 @@ def assign_age(Age):
 def make_model(df, df_target):
     
     
-    X = df.values
-    y = df_target.values.ravel()
+    X = df
+    #y = df_target.values.ravel()
+    y = df_target
     
-    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=2019)
+    
+    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.20,random_state=2019)
+    
+    # Begin oversampling
+    oversample = pd.concat([X_train,y_train],axis=1)
+    max_size = oversample['Default'].value_counts().max()
+    lst = [oversample]
+    
+    for class_index, group in oversample.groupby('Default'):
+        lst.append(group.sample(max_size-len(group), replace=True))
+    X_train = pd.concat(lst)
+    y_train=pd.DataFrame.copy(X_train['Default'])
+    del X_train['Default']
     
     logreg = LogisticRegression()
     logreg.fit(X_train,y_train)
@@ -69,4 +83,3 @@ def correlate(df,df_target,num_features, ignore_sign):
     else:
         print(non_ab)
 
-    
